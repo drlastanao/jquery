@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Aplicación Autobuses</title>
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.css" />
+        <script src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.js"></script>
+    </head>
+    <body>
+
+        <div data-role="page" id="page1">
+
+            <div data-role="header" data-position="fixed">
+            <h1>Introducción postes</h1>
+            </div><!-- /header -->
+            <div data-role="content">
+                <form id="formulario" action="http://zaragoza.avanzagrupo.com/frm_esquemaparadatime.php" method=get>
+                    <fieldset>
+                        Poste: <input type=text id=poste name=poste placeholder="Introduzca poste">
+                        <button type="submit" id=Ver>Ver</button>
+                        <br><br>
+
+                        <button type="button" id=centro>Ir al trabajo </button>
+                        <button type="button" id=casa>Volver a casa </button>
+                        <button type="button" id=casafiesta>Volver a casa desde CesarAugusto </button>
+                    </fieldset>
+                </form>
+              </div>
+    </body>
+
+
+<script>
+ 
+  $("#centro").click(function() {
+    $("#poste").val(178);
+    $("#formulario").submit();
+  });
+
+ 
+  $("#casa").click(function() {
+    $("#poste").val(669);
+    $("#formulario").submit();
+  });
+
+   $("#casafiesta").click(function() {
+    $("#poste").val(93);
+    $("#formulario").submit();
+  });
+  
+  
+ </script>
+
+</html>
