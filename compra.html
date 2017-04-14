@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Aplicación Autobuses</title>
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.css" />
+        <script src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.js"></script>
+    </head>
+    <body>
+
+        <div data-role="page" id="page1">
+
+            <div data-role="header" data-position="fixed">
+            <h1>Lista compra</h1>
+            </div><!-- /header -->
+            <div data-role="content">
+                    <fieldset>
+                        Item: <input type=text id=item name=item placeholder="Introduzca item">
+                        <button type="button" id=Anadir>Añadir</button>
+                        <br><br>
+                    </fieldset>
+            </div>
+            <input type=button id="Salvar" value="Salvar" />
+            <input type=button id="BorrarTodo" value="borrar todo" />
+            <div data-role="content" id="items">
+            </div>
+    </body>
+
+
+<script>
+ var contenido=[];
+ var i=0;
+ leer();
+
+   $("#Anadir").click(function() {
+      var auxitem=$("#item").val();
+      var aux= {item:auxitem};
+      contenido.push(aux);
+      $("#items").append("<input type=text  id=tb"+i+" value=\"comprar "+auxitem+"\" readonly>");
+      $("#items").append("<br>");
+      i=i+1;
+  });
+
+
+ $("#Salvar").click(function() {
+     salvar();
+  });
+
+   $("#BorrarTodo").click(function() {
+     borrarTodo();
+  });
+function leer()
+{
+    if (localStorage.getItem("contenido")!=null)
+    {
+           contenido=JSON.parse(localStorage.getItem("contenido"));
+           i=contenido.length;
+    }
+    else 
+    {
+        contenido=[];
+        i=0;
+    }
+
+    if (contenido.length>0)
+    {
+        for (aux=0;aux<i;aux++)
+        {
+             var auxitem=contenido[aux].item;
+             $("#items").append("<input type=text  id=tb"+aux+" value=\"comprar "+auxitem+"\" readonly>");
+             $("#items").append("<br>");
+        }
+    }
+
+}
+
+function salvar()
+{
+   localStorage.setItem('contenido', JSON.stringify(contenido));
+   
+}
+
+function borrarTodo()
+{
+    contenido=[];
+    i=0;
+
+   localStorage.setItem('contenido', JSON.stringify(contenido));
+   
+}
+
+
+  
+ </script>
+
+</html>
