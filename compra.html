@@ -37,7 +37,7 @@
       var auxitem=$("#item").val();
       var aux= {item:auxitem};
       contenido.push(aux);
-      $("#items").append("<input type=text  id=tb"+i+" value=\"comprar "+auxitem+"\" readonly>");
+      $("#items").append("<input type=text  id=tb"+i+" value=\"comprar "+auxitem+"\" readonly><input type=button value='borrar' onclick='borrar("+i+")'>");
       $("#items").append("<br>");
       i=i+1;
   });
@@ -78,7 +78,7 @@ function leer()
 function salvar()
 {
    localStorage.setItem('contenido', JSON.stringify(contenido));
-   
+   window.location.reload(true);
 }
 
 function borrarTodo()
@@ -87,8 +87,15 @@ function borrarTodo()
     i=0;
 
    localStorage.setItem('contenido', JSON.stringify(contenido));
-   
+   window.location.reload(true);
 }
+
+function borrar(id)
+{
+    contenido.splice(id,1);
+    window.location.reload(true);
+}
+
 
 
   
