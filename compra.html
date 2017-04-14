@@ -21,10 +21,10 @@
                         <br><br>
                     </fieldset>
             </div>
-            <input type=button id="Salvar" value="Salvar" />
-            <input type=button id="BorrarTodo" value="borrar todo" />
             <div data-role="content" id="items">
             </div>
+            <input type=button id="BorrarTodo" value="borrar todo" />
+ 
     </body>
 
 
@@ -37,19 +37,13 @@
       var auxitem=$("#item").val();
       var aux= {item:auxitem};
       contenido.push(aux);
-      $("#items").append("<input type=text  id=tb"+i+" value=\"comprar "+auxitem+"\" readonly><input type=button value='borrar' onclick='borrar("+i+")'>");
-      $("#items").append("<br>");
-      i=i+1;
+      salvar();
   });
 
-
- $("#Salvar").click(function() {
-     salvar();
-  });
-
-   $("#BorrarTodo").click(function() {
+ $("#BorrarTodo").click(function() {
      borrarTodo();
   });
+
 function leer()
 {
     if (localStorage.getItem("contenido")!=null)
@@ -57,19 +51,13 @@ function leer()
            contenido=JSON.parse(localStorage.getItem("contenido"));
            i=contenido.length;
     }
-    else 
-    {
-        contenido=[];
-        i=0;
-    }
-
+   
     if (contenido.length>0)
     {
         for (aux=0;aux<i;aux++)
         {
              var auxitem=contenido[aux].item;
-             $("#items").append("<input type=text  id=tb"+aux+" value=\"comprar "+auxitem+"\" readonly>");
-             $("#items").append("<br>");
+             $("#items").append("<input type=text  id=tb"+aux+" value=\""+auxitem+"\" readonly><br>");
         }
     }
 
@@ -83,22 +71,10 @@ function salvar()
 
 function borrarTodo()
 {
-    contenido=[];
-    i=0;
-
+   contenido=[];
+   i=0;
    localStorage.setItem('contenido', JSON.stringify(contenido));
    window.location.reload(true);
 }
-
-function borrar(id)
-{
-    contenido.splice(id,1);
-    window.location.reload(true);
-}
-
-
-
-  
  </script>
-
 </html>
