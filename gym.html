@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <title>Aplicación Autobuses</title>
+        <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.css" />
+        <script src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
+        <script src="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/3.7.8/firebase.js"></script> //firebase
+    </head>
+    <body>
+
+        <div data-role="page" id="page1">
+
+            <div data-role="header" data-position="fixed">
+            <h1>Lista compra</h1>
+            </div><!-- /header -->
+            <div data-role="content">
+                    <fieldset>
+                        <button type="button" id=IrGym>Ir al gym</button>
+                        <button type="button" id=VolverGym>Volver del gym</button>
+                     
+                        <br><br>
+                    </fieldset>
+            </div>
+            <div data-role="content" id="items">
+            </div>
+          
+    </body>
+
+
+<script>
+     // Initialize Firebase
+ var config = {
+    apiKey: "AIzaSyC-GGsHutJ7ZVGMWjxsttLewEyDClg-G9I",
+    authDomain: "registrogym.firebaseapp.com",
+    databaseURL: "https://registrogym.firebaseio.com",
+    projectId: "registrogym",
+    storageBucket: "registrogym.appspot.com",
+    messagingSenderId: "585798825489"
+  };
+  firebase.initializeApp(config);
+
+
+
+
+  
+
+function googleSignin() {
+  var database = firebase.database();
+  database.ref("metadata").set(
+      {app:"prueba",
+      version:"0.0.01"});
+  contenido=[];  
+  salvar();
+};
+
+
+
+ var contenido=[];
+ leer();
+
+  $("#IrGym").click(function() {
+      var auxitem=new Date();
+      alert(auxitem);
+      contenido= {fecha:auxitem,incorrecta:false,fechaRegreso:null};
+      salvar();
+  });
+
+$("#VolverGym").click(function() {
+      var auxitem=new Date()
+      if (contenido.hasOwnProperty('fecha'))
+          contenido.fechaRegreso=auxitem;
+      else
+      {
+          var inicial=auxitem;
+          contenido= {fecha:inicial,incorrecta:true,fechaRegreso:auxitem};
+      }
+      registrar();
+  });
+
+
+
+function leer()
+{
+    if (localStorage.getItem("contenido")!=null)
+    {
+           contenido=JSON.parse(localStorage.getItem("contenido"));
+    }
+   
+    if (contenido.hasOwnProperty('fecha'))
+    {
+             var auxitem=contenido.fecha;
+             $("#items").append("<input type=text value=\""+auxitem+"\" readonly><br>");
+    }
+
+}
+
+function salvar()
+{
+   localStorage.setItem('contenido', JSON.stringify(contenido));
+   window.location.reload(true);
+}
+
+function registrar()
+{
+    googleSignin();
+}
+
+
+ </script>
+</html>
