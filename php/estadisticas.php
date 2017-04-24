@@ -29,10 +29,10 @@ consulta($link,$query,2,$arfecha,$arminutos,$arcount);
 $query = "select min(fecha) fecha,count(*) count,sum(minutos) minutos from registros_gym where fecha>='".date("Y")."-".date("m")."-01'";
 consulta($link,$query,3,$arfecha,$arminutos,$arcount);
 
-echo $arcount[3]." veces este mes con una media de ".$arminutos[3]/$arcount[3]." minutos <br>";
-echo $arcount[2]." veces este año con una media de ".($arminutos[2]/$arcount[2])." minutos <br>";
-echo $arcount[1]." veces con una media de ".$arminutos[1]/$arcount[1]." minutos <br>";
-echo "Datos desde ".$arfechas[1];
+echo $arcount[3]." veces este mes  ".number_format($arminutos[3]/$arcount[3],0)." min de media <br>";
+echo $arcount[2]." veces este año  ".number_format($arminutos[2]/$arcount[2],0)." min de media <br>";
+echo $arcount[1]." veces ".number_format($arminutos[1]/$arcount[1],0)." min de media total <br>";
+echo "Datos desde ".$arfecha[1];
 
 $link->close();
 

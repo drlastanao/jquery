@@ -28,10 +28,18 @@
                 <form id="formulario" action="registrar.php" method=get>
                     <fieldset>
                         Minutos: <input type=text id=minutos name=minutos placeholder="Introduzca minutos">
-                        <button type="submit" id=Ver>Ver</button>
+                        <button type="submit" id=Registrar>Registrar</button>
                         <br><br>
                     </fieldset>
                 </form>
+
+                <form id="formulario2" action="infogym.php" method=get>
+                    <fieldset>
+                        <button type="submit" id=Ver>Ver Estadisticas</button>
+                        <br><br>
+                    </fieldset>
+                </form>
+
               </div>
     </div>
  
@@ -48,6 +56,16 @@
             <div data-role="content">
                  Ya has registrado <?php echo $minutos ?> minutos.
               </div>
+                     <form id="formulario2" action="infogym.php" method=get>
+                    <fieldset>
+                        <button type="submit" id=Ver>Ver Estadisticas</button>
+                        <br><br>
+                    </fieldset>
+                </form>
+
+        </div>
+
+
     </body>
 
   <?php 
