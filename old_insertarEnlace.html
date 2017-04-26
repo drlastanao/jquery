@@ -1,28 +1,35 @@
 
 <!DOCTYPE html>
 <html ng-app='enlaces'>
+
 <head>
     <meta charset="utf-8">
     <title>Insertar enlace</title>
     <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" type="text/css" href="libs/bootstrap/dist/css/bootstrap.min.css" />
     <script src="libs/angular/angular.min.js"></script>
     <script src="libs/jquery/dist/jquery.min.js"></script>
     <script src="libs/bootstrap/dist/js/bootstrap.min.js"></script>
     <script src="https://code.angularjs.org/1.5.0/angular-route.min.js"></script>
-    <link rel="stylesheet" href="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.css" />
-    <script src="http://code.jquery.com/jquery-1.4.4.min.js"></script>
-    <script src="http://code.jquery.com/mobile/1.0a2/jquery.mobile-1.0a2.min.js"></script>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.5.0/css/font-awesome.min.css">
+ 
  
     </head>
-    
+    <body>
+</head>
+
 <body>
-
-
-   <div data-role="page" id="page2">
-          <div data-role="header" data-position="fixed">
-            <h1>Insertar categoria</h1>
-            </div><!-- /header -->
-            <div data-role="content">
+<h1>Lista de categorias</h1>
+<div  ng-controller="EnlacesCtrl" >
+    <div ng-repeat="categoria in categorias" >
+        <div>
+            <div >
+                  <small>{{categoria.txtcategoria}}({{categoria.id}})</small>
+             </div>
+         </div>
+    </div>
+</div>
+<h1>Formulario enlace</h1>  
                 <form id="formulario" action="php/insertarEnlace.php" method=get>
                     <fieldset>
                         Enlace: <input type=text id=enlace name=enlace placeholder="Introduzca enlace"><br>
@@ -32,20 +39,9 @@
                         <br><br>
                     </fieldset>
                 </form>
-              </div>
 
-              <h1>Lista de categorias</h1>
-              <div data-role="content" ng-controller="EnlacesCtrl">
-                   <div data-role="header" data-position="fixed" ng-repeat="categoria in categorias">
-                    <div>
-                         <div >
-                           <small>{{categoria.txtcategoria}}({{categoria.id}})</small>
-                         </div>
-                    </div>
-                    </div>
-              </div>
-    </div>
-
+    
+   </body>
 
 
    <script>

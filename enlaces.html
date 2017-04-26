@@ -21,15 +21,15 @@
 <div class="lista-categorias" ng-controller="EnlacesCtrl"  >
     <div ng-repeat="categoria in categorias" >
         <div>
-            <div class="col-sm-10">
+            <div class="col-md-3"> 
                   <small>{{categoria.txtcategoria}}</small>
-             </div>
+             </div> 
          </div>
     </div>
 </div>
 
-
- 
+<div class="col-sm-10">
+ <br><br>
      Introduzca su búsqueda:<input type="text" ng-model="busqueda"  class="form-control" ><br> 
     <small> Buscando: {{busqueda}}  </small>
 
@@ -46,7 +46,7 @@
          </div>
     </div>
 </div>
-  
+</div>
 
 <script>
     var miAppAngular = angular.module('enlaces',[]);
